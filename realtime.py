@@ -1,8 +1,10 @@
-import time
-import pygame
-import os
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+# Module Imports
+import time, datetime, os, pygame
+from datetime import datetime
 from pytz import timezone   
+
+
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 pygame.init()
 yellow = 255,255,0
 screen = pygame.display.set_mode((1250, 650))
@@ -10,9 +12,10 @@ myfont = pygame.font.SysFont("Arial", 40)
 myfont2 = pygame.font.SysFont("Arial", 22) 
 clock = pygame.time.Clock()
 clock.tick(100)
+
+# Loop every second
 while True:
     screen.fill(yellow)
-    from datetime import datetime
     # South Africa
     south_africa = timezone('Africa/Johannesburg')
     sa_time = datetime.now(south_africa)
@@ -30,7 +33,6 @@ while True:
     la_time = datetime.now(la)
     losangeles = la_time.strftime("%H:%M:%S")
     # London
-    import datetime
     now = datetime.datetime.now()
     realtime = (now.strftime("%H:%M:%S"))
     textsurface1 = myfont.render(sa, True,(0,0,0))
@@ -57,7 +59,7 @@ while True:
     screen.blit(textsurface3,(20, 575)) # Perth
     screen.blit(textsurface4,(1070,575)) # LA 
     pygame.display.update()
-    time.sleep(0.9988888888888)
+    time.sleep(0.9988888888888) # Wait for approx a second
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
